@@ -33,12 +33,7 @@ public class ComboBoxExperiments2 extends Application {
         comboBilduma.setItems(bildumaList);
         comboBilduma.setPromptText("abereak");
 
-        /*VBox vbox = new VBox(comboBilduma);
-        //vbox.setAlignment(Pos.BOTTOM_LEFT);
-        //  vbox.setPadding(new Insets(10,0,0,0));
-        Scene scene = new Scene(vbox, 200, 120);
-        primaryStage.setScene(scene);
-        primaryStage.show();*/
+
         Map<String, List<Argazki>> bildumaMap = new HashMap<>();
 
         bildumaMap.put("abereak", List.of(
@@ -88,9 +83,8 @@ public class ComboBoxExperiments2 extends Application {
         ListView<Argazki> listViewOfArgazki = new ListView<>(argazkiList);
 
         VBox vBox = new VBox();
-        vBox.getChildren().addAll(comboBilduma,listViewOfArgazki);
-        //vbox.setAlignment(Pos.BOTTOM_LEFT);
-        //  vbox.setPadding(new Insets(10,0,0,0));
+        ImageView imageView = new ImageView();
+        vBox.getChildren().addAll(comboBilduma,listViewOfArgazki,imageView);
         Scene scene = new Scene(vBox, 500, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -100,30 +94,13 @@ public class ComboBoxExperiments2 extends Application {
             String fitx = observable.getValue().getFitx();
 
             try {
-                int i=-1;
-                ImageView imageView = new ImageView();
                 imageView.setImage(lortuIrudia(fitx));
-                if(i==-1) {
-                    vBox.getChildren().add(imageView);
-                }else{
-                    vBox.getChildren().add(i,imageView);
-                }
-                i=vBox.getChildren().indexOf(imageView);
-               /* VBox v=new VBox(imageView);
-                v.setAlignment(Pos.BOTTOM_LEFT);
-                Scene scene1 = new Scene(v, 200, 120);
-                primaryStage.setScene(scene1);
-                primaryStage.show();*/
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         });
-
-
-
-
     }
 
     private Image lortuIrudia(String location) throws IOException {
